@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 
 const app = express();
 const port = 8000;
@@ -16,6 +17,7 @@ const RECIPES = [
 ];
 
 app.use(cors());
+app.use(morgan('combined'));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
