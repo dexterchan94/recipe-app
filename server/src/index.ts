@@ -1,31 +1,30 @@
-import { Request, Response } from "express"
+import express, { Request, Response } from 'express';
+import cors from 'cors';
 
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const port = 8000
+const app = express();
+const port = 8000;
 
 const RECIPES = [
   {
     id: 1,
-    title: 'Mashed Potatoes'
+    title: 'Mashed Potatoes',
   },
   {
     id: 2,
-    title: 'Roasted Potatoes'
-  }
-]
+    title: 'Roasted Potatoes',
+  },
+];
 
-app.use(cors())
+app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!')
-})
+  res.send('Hello World!');
+});
 
 app.get('/recipes', (req: Request, res: Response) => {
-  res.json(RECIPES)
-})
+  res.json(RECIPES);
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
