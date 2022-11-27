@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import helmet from 'helmet';
 
 const app = express();
 const port = 8000;
@@ -18,6 +19,7 @@ const RECIPES = [
 
 app.use(cors());
 app.use(morgan('combined'));
+app.use(helmet());
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
