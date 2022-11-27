@@ -5,6 +5,10 @@
 1. Install dependencies `yarn install`
 1. Start development server `yarn dev`
 
+### Linting
+
+[Setup Guide Used](https://blog.logrocket.com/how-to-set-up-node-typescript-express/)
+
 ## Client
 
 1. Install dependencies `yarn install`
@@ -22,8 +26,6 @@ yarn lint
 
 ## Server
 
-1. Setup Typescript
-1. Setup Linting and autoformatting
 1. Setup BREAD endpoints for recipes
 
 - Browse
