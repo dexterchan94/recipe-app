@@ -1,3 +1,5 @@
+import { Request, Response } from "express"
+
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -16,11 +18,11 @@ const RECIPES = [
 
 app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 })
 
-app.get('/recipes', (req, res) => {
+app.get('/recipes', (req: Request, res: Response) => {
   res.json(RECIPES)
 })
 
