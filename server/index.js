@@ -6,22 +6,22 @@ const port = 8000
 const RECIPES = [
   {
     id: 1,
-    title: "Mashed Potatoes"
+    title: 'Mashed Potatoes'
   },
   {
     id: 2,
-    title: "Roasted Potatoes"
+    title: 'Roasted Potatoes'
   }
-];
+]
 
-app.use(cors());
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get("/recipes", (req, res) => {
-  res.json(RECIPES);
+app.get('/recipes', (req, res) => {
+  res.json(RECIPES)
 })
 
 app.listen(port, () => {
