@@ -9,6 +9,10 @@
 
 [Setup Guide Used](https://blog.logrocket.com/how-to-set-up-node-typescript-express/)
 
+```
+yarn lint
+```
+
 ## Client
 
 1. Install dependencies `yarn install`
