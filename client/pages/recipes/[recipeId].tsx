@@ -1,19 +1,20 @@
-import { useRouter } from "next/router";
-import { useQuery } from "react-query"
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useQuery } from 'react-query';
 
 const RECIPES = [
   {
-    id: "1",
-    title: "Mashed Potatoes"
+    id: '1',
+    title: 'Mashed Potatoes',
   },
   {
-    id: "2",
-    title: "Roasted Potatoes"
-  }
+    id: '2',
+    title: 'Roasted Potatoes',
+  },
 ];
 
 async function getRecipe(recipeId: string) {
-  const recipe = RECIPES.find((r) => r.id === recipeId)
+  const recipe = RECIPES.find((r) => r.id === recipeId);
   return recipe;
 
   // const res = await fetch("http://localhost:8000/recipes");
@@ -49,16 +50,15 @@ function RecipeRoute(props) {
       <h1>{recipe.title}</h1>
       <div></div>
     </>
-
-  )
+  );
 }
 
 RecipeRoute.getInitialProps = async (ctx) => {
   console.log(ctx);
-  const recipe = RECIPES.find((r) => r.id === "1")
+  const recipe = RECIPES.find((r) => r.id === '1');
   return {
-    recipe
-  }
-}
+    recipe,
+  };
+};
 
 export default RecipeRoute;

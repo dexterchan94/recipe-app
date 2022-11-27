@@ -1,7 +1,7 @@
-import { useQuery } from "react-query";
+import { useQuery } from 'react-query';
 
 async function getRecipes() {
-  const res = await fetch("http://localhost:8000/recipes");
+  const res = await fetch('http://localhost:8000/recipes');
 
   if (!res.ok) {
     throw new Error(res.statusText);
@@ -14,23 +14,20 @@ async function getRecipes() {
 export default function RecipesRoute() {
   const { isLoading, error, data } = useQuery({
     queryKey: ['recipes'],
-    queryFn: getRecipes
-  })
+    queryFn: getRecipes,
+  });
 
-  if (isLoading) return 'Loading...'
-  if (error) return 'An error has occurred: ' + error.message
+  if (isLoading) return 'Loading...';
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <>
       <h1>Recipes</h1>
       <ul>
         {data.map((recipe) => {
-          return (
-            <li key={recipe.id}>{recipe.title}</li>
-          )
+          return <li key={recipe.id}>{recipe.title}</li>;
         })}
       </ul>
     </>
-
-  )
+  );
 }
