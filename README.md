@@ -2,8 +2,10 @@
 
 ## Server
 
+1. Start MongoDB service `brew services start mongodb-community@6.0`
 1. Install dependencies `yarn install`
 1. Start development server `yarn dev`
+1. Stop MongoDB service `brew services stop mongodb-community@6.0`
 
 ### Linting
 
