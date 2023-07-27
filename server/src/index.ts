@@ -1,55 +1,21 @@
-import { readFileSync } from 'fs';
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { ApolloServer } from '@apollo/server'
+import { startStandaloneServer } from '@apollo/server/standalone'
+import { schema } from './schema.js'
+import { Context, createContext } from './context.js'
 
-const recipes = [
-  {
-    id: '1',
-    title: 'Canned soup',
-    steps: [
-      {
-        body: 'Open can.',
-      },
-      {
-        body: 'Heat soup.',
-      },
-      {
-        body: 'Serve.',
-      },
-    ],
-  },
-  {
-    id: '2',
-    title: 'Toast',
-    steps: [
-      {
-        body: 'Toast bread.',
-      },
-      {
-        body: 'Spread butter and jam.',
-      },
-      {
-        body: 'Serve.',
-      },
-    ],
-  },
-];
+const start = async () => {
+  const server = new ApolloServer<Context>({ schema })
 
-const typeDefs = readFileSync('./schema/schema.graphql', { encoding: 'utf-8' });
+  const { url } = await startStandaloneServer(server, {
+    context: createContext,
+    listen: { port: 4000 }
+  })
 
-const resolvers = {
-  Query: {
-    recipes: () => recipes,
-  },
-};
+  console.log(`\
+  🚀 Server ready at: ${url}
+  ⭐️ See sample queries: http://pris.ly/e/ts/graphql-nexus#using-the-graphql-api
+  `)
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+}
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
-});
-
-console.log(`🚀  Server ready at: ${url}`);
+start()
