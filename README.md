@@ -2,43 +2,42 @@
 
 ## Server
 
-1. Start MongoDB service `brew services start mongodb-community@6.0`
+1. Start PostgreSQL server
 1. Install dependencies `yarn install`
+1. Generate Prisma client and GraphQL Schema `yarn generate`
+1. Run Prisma database migration `yarn pm`
 1. Start development server `yarn dev`
-1. Stop MongoDB service `brew services stop mongodb-community@6.0`
+1. Stop PostgreSQL server
 
 ### Linting
-
-[Setup Guide Used](https://blog.logrocket.com/how-to-set-up-node-typescript-express/)
-
 ```
 yarn lint
 ```
 
 ## Client
 
-1. Install dependencies `yarn install`
-1. Start development server `yarn dev`
+### Getting Started
+
+Install Dependencies:
+```bash
+yarn install
+```
+
+Run code generation:
+```bash
+yarn codegen
+```
+
+Run the development server:
+```bash
+yarn dev
+```
 
 ### Linting
-
-[Setup Guide Used](https://www.sandromaglione.com/techblog/create-nextjs-project-with-typescript-eslint-prettier-tailwindcss)
-
 ```
 yarn lint
 ```
 
-# TODO
+### Fonts
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Server
-
-1. Setup BREAD endpoints for recipes
-
-- Browse
-- Read
-- Edit
-- Add
-- Delete
-
-1. Add necessary middleware?
-1. Setup MongoDB
