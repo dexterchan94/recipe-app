@@ -1,33 +1,19 @@
-import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import morgan from 'morgan';
-import helmet from 'helmet';
-import recipesRouter from './routes/recipes';
-// import insertRecipes from './scripts/insertRecipes';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { schema } from './schema.js';
+import { Context, createContext } from './context.js';
 
-main().catch((err) => console.log(err));
+const start = async () => {
+  const server = new ApolloServer<Context>({ schema });
 
-async function main() {
-  await mongoose.connect('mongodb://localhost:27017/test');
+  const { url } = await startStandaloneServer(server, {
+    context: createContext,
+    listen: { port: 4000 },
+  });
 
-  // Repopulate DB
-  // await insertRecipes();
-}
+  console.log(
+    `🚀 Server ready at: ${url} ⭐️ See sample queries: http://pris.ly/e/ts/graphql-nexus#using-the-graphql-api`,
+  );
+};
 
-const app = express();
-const port = 8000;
-
-app.use(cors());
-app.use(morgan('combined'));
-app.use(helmet());
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
-
-app.use('/recipes', recipesRouter);
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+start();
