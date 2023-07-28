@@ -1,5 +1,5 @@
 import HydratedRecipes from './hydratedRecipes';
-import styles from './page.module.css'
+import styles from './page.module.css';
 
 export default async function Home(props: any) {
   return (
@@ -7,5 +7,5 @@ export default async function Home(props: any) {
       <h1>Hello</h1>
       <HydratedRecipes />
     </main>
-  )
+  );
 }
