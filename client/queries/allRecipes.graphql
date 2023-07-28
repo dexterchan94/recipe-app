@@ -1,0 +1,6 @@
+  query testQuery {
+    allRecipes {
+      title
+      id
+    }
+  }
