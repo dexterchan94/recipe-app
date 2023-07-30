@@ -2,11 +2,20 @@
 ### Do not make changes to this file directly
 
 
+input CreateRecipeInput {
+  title: String!
+}
+
+type Mutation {
+  createRecipe(authorId: Int!, data: CreateRecipeInput!): Recipe
+  deleteRecipe(id: Int!): Recipe
+}
+
 type Query {
-  allRecipes: [Recipe!]
-  allUsers: [User!]
   recipeById(id: Int): Recipe
+  recipes: [Recipe!]
   userById(id: Int): User
+  users: [User!]
 }
 
 type Recipe {
