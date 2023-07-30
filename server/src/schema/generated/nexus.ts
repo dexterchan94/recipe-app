@@ -17,6 +17,9 @@ export interface NexusGenInputs {
   CreateRecipeInput: { // input type
     title: string; // String!
   }
+  UpdateRecipeInput: { // input type
+    title: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -59,6 +62,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
     deleteRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
+    updateRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
   }
   Query: { // field return type
     recipeById: NexusGenRootTypes['Recipe'] | null; // Recipe
@@ -83,6 +87,7 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createRecipe: 'Recipe'
     deleteRecipe: 'Recipe'
+    updateRecipe: 'Recipe'
   }
   Query: { // field return type name
     recipeById: 'Recipe'
@@ -110,6 +115,10 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['CreateRecipeInput']; // CreateRecipeInput!
     }
     deleteRecipe: { // args
+      id: number; // Int!
+    }
+    updateRecipe: { // args
+      data: NexusGenInputs['UpdateRecipeInput']; // UpdateRecipeInput!
       id: number; // Int!
     }
   }

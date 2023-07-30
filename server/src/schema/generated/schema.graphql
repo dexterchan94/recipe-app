@@ -9,6 +9,7 @@ input CreateRecipeInput {
 type Mutation {
   createRecipe(authorId: Int!, data: CreateRecipeInput!): Recipe
   deleteRecipe(id: Int!): Recipe
+  updateRecipe(data: UpdateRecipeInput!, id: Int!): Recipe
 }
 
 type Query {
@@ -21,6 +22,10 @@ type Query {
 type Recipe {
   authorId: Int!
   id: Int!
+  title: String!
+}
+
+input UpdateRecipeInput {
   title: String!
 }
 

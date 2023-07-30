@@ -67,6 +67,33 @@ export const CreateRecipeInput = inputObjectType({
   },
 });
 
+export const updateRecipe = mutationField('updateRecipe', {
+  type: 'Recipe',
+  args: {
+    data: nonNull(
+      arg({
+        type: 'UpdateRecipeInput',
+      }),
+    ),
+    id: nonNull(intArg()),
+  },
+  resolve: (_, args, context: Context) => {
+    return context.prisma.recipe.update({
+      where: { id: args.id || undefined },
+      data: {
+        title: args.data.title,
+      },
+    });
+  },
+});
+
+export const UpdateRecipeInput = inputObjectType({
+  name: 'UpdateRecipeInput',
+  definition(t) {
+    t.nonNull.string('title');
+  },
+});
+
 export const deleteRecipe = mutationField('deleteRecipe', {
   type: 'Recipe',
   args: {
