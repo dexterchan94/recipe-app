@@ -1,0 +1,43 @@
+fragment RecipeFragment on Recipe {
+  title
+  id
+  author {
+    name
+  }
+}
+
+query Recipes {
+  recipes {
+    ...RecipeFragment
+  }
+}
+
+query RecipeById($id: Int!) {
+  recipeById(id: $id) {
+    ...RecipeFragment
+  }
+}
+
+query RecipesByUserId($id: Int!) {
+  recipesByUserId(id: $id) {
+    ...RecipeFragment
+  }
+}
+
+mutation CreateRecipe($data: CreateRecipeInput!, $authorId: Int!) {
+  createRecipe(data: $data, authorId: $authorId) {
+    ...RecipeFragment
+  }
+}
+
+mutation UpdateRecipe($data: UpdateRecipeInput!, $id: Int!) {
+  updateRecipe(data: $data, id: $id) {
+    ...RecipeFragment
+  }
+}
+
+mutation DeleteRecipe($id: Int!) {
+  deleteRecipe(id: $id) {
+    ...RecipeFragment
+  }
+}

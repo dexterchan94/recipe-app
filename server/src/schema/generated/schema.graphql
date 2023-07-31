@@ -17,6 +17,7 @@ type Mutation {
   deleteRecipe(id: Int!): Recipe
   deleteUser(id: Int!): User
   updateRecipe(data: UpdateRecipeInput!, id: Int!): Recipe
+  updateUser(data: UpdateUserInput!, id: Int!): User
 }
 
 type Query {
@@ -36,6 +37,10 @@ type Recipe {
 
 input UpdateRecipeInput {
   title: String!
+}
+
+input UpdateUserInput {
+  name: String
 }
 
 type User {

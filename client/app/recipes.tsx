@@ -1,8 +1,9 @@
 'use client';
-import { useTestQueryQuery } from '../queries/generated';
+
+import { useRecipesQuery } from '@/queries/generated';
 
 export default function Recipes() {
-  const { data } = useTestQueryQuery();
+  const { data } = useRecipesQuery();
 
   console.log('HI', data);
 
