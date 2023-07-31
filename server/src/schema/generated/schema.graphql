@@ -6,20 +6,29 @@ input CreateRecipeInput {
   title: String!
 }
 
+input CreateUserInput {
+  email: String!
+  name: String
+}
+
 type Mutation {
   createRecipe(authorId: Int!, data: CreateRecipeInput!): Recipe
+  createUser(data: CreateUserInput!): User
   deleteRecipe(id: Int!): Recipe
+  deleteUser(id: Int!): User
   updateRecipe(data: UpdateRecipeInput!, id: Int!): Recipe
 }
 
 type Query {
-  recipeById(id: Int): Recipe
+  recipeById(id: Int!): Recipe
   recipes: [Recipe!]
-  userById(id: Int): User
+  recipesByUserId(id: Int!): [Recipe!]
+  userById(id: Int!): User
   users: [User!]
 }
 
 type Recipe {
+  author: User
   authorId: Int!
   id: Int!
   title: String!

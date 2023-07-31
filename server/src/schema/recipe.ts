@@ -16,6 +16,14 @@ export const Recipe = objectType({
     t.nonNull.int('id');
     t.nonNull.string('title');
     t.nonNull.int('authorId');
+    t.field('author', {
+      type: 'User',
+      resolve: (parent, _, context: Context) => {
+        return context.prisma.user.findUnique({
+          where: { id: parent.authorId },
+        });
+      },
+    });
   },
 });
 
@@ -29,11 +37,23 @@ export const recipesQuery = queryField('recipes', {
 export const recipeByIdQuery = queryField('recipeById', {
   type: 'Recipe',
   args: {
-    id: intArg(),
+    id: nonNull(intArg()),
   },
   resolve: (_parent, args, context: Context) => {
     return context.prisma.recipe.findUnique({
       where: { id: args.id || undefined },
+    });
+  },
+});
+
+export const recipesByUserIdQuery = queryField('recipesByUserId', {
+  type: list(nonNull('Recipe')),
+  args: {
+    id: nonNull(intArg()),
+  },
+  resolve: (_parent, args, context: Context) => {
+    return context.prisma.recipe.findMany({
+      where: { authorId: args.id },
     });
   },
 });

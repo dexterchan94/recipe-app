@@ -17,6 +17,10 @@ export interface NexusGenInputs {
   CreateRecipeInput: { // input type
     title: string; // String!
   }
+  CreateUserInput: { // input type
+    email: string; // String!
+    name?: string | null; // String
+  }
   UpdateRecipeInput: { // input type
     title: string; // String!
   }
@@ -61,16 +65,20 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
+    createUser: NexusGenRootTypes['User'] | null; // User
     deleteRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
+    deleteUser: NexusGenRootTypes['User'] | null; // User
     updateRecipe: NexusGenRootTypes['Recipe'] | null; // Recipe
   }
   Query: { // field return type
     recipeById: NexusGenRootTypes['Recipe'] | null; // Recipe
     recipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
+    recipesByUserId: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
     userById: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][] | null; // [User!]
   }
   Recipe: { // field return type
+    author: NexusGenRootTypes['User'] | null; // User
     authorId: number; // Int!
     id: number; // Int!
     title: string; // String!
@@ -86,16 +94,20 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createRecipe: 'Recipe'
+    createUser: 'User'
     deleteRecipe: 'Recipe'
+    deleteUser: 'User'
     updateRecipe: 'Recipe'
   }
   Query: { // field return type name
     recipeById: 'Recipe'
     recipes: 'Recipe'
+    recipesByUserId: 'Recipe'
     userById: 'User'
     users: 'User'
   }
   Recipe: { // field return type name
+    author: 'User'
     authorId: 'Int'
     id: 'Int'
     title: 'String'
@@ -114,7 +126,13 @@ export interface NexusGenArgTypes {
       authorId: number; // Int!
       data: NexusGenInputs['CreateRecipeInput']; // CreateRecipeInput!
     }
+    createUser: { // args
+      data: NexusGenInputs['CreateUserInput']; // CreateUserInput!
+    }
     deleteRecipe: { // args
+      id: number; // Int!
+    }
+    deleteUser: { // args
       id: number; // Int!
     }
     updateRecipe: { // args
@@ -124,10 +142,13 @@ export interface NexusGenArgTypes {
   }
   Query: {
     recipeById: { // args
-      id?: number | null; // Int
+      id: number; // Int!
+    }
+    recipesByUserId: { // args
+      id: number; // Int!
     }
     userById: { // args
-      id?: number | null; // Int
+      id: number; // Int!
     }
   }
 }
