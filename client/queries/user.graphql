@@ -1,0 +1,38 @@
+fragment UserFragment on User {
+  email
+  name
+  id
+  recipes {
+    title
+  }
+}
+
+query Users {
+  users {
+    ...UserFragment
+  }
+}
+
+query UserById($id: Int!) {
+  userById(id: $id) {
+    ...UserFragment
+  }
+}
+
+mutation CreateUser($data: CreateUserInput!) {
+  createUser(data: $data) {
+    ...UserFragment
+  }
+}
+
+mutation UpdateUser($data: UpdateUserInput!, $id: Int!) {
+  updateUser(data: $data, id: $id) {
+    ...UserFragment
+  }
+}
+
+mutation DeleteUser($id: Int!) {
+  deleteUser(id: $id) {
+    ...UserFragment
+  }
+}

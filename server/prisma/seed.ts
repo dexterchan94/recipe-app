@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient, Prisma } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -9,10 +9,10 @@ const userData: Prisma.UserCreateInput[] = [
     recipes: {
       create: [
         {
-          title: 'Recipe 1'
+          title: 'Recipe 1',
         },
         {
-          title: 'Recipe 2'
+          title: 'Recipe 2',
         },
       ],
     },
@@ -23,30 +23,30 @@ const userData: Prisma.UserCreateInput[] = [
     recipes: {
       create: [
         {
-          title: 'Blue Sky'
-        }
+          title: 'Blue Sky',
+        },
       ],
     },
-  }
-]
+  },
+];
 
 async function main() {
-  console.log(`Start seeding ...`)
+  console.log(`Start seeding ...`);
   for (const u of userData) {
     const user = await prisma.user.create({
       data: u,
-    })
-    console.log(`Created user with id: ${user.id}`)
+    });
+    console.log(`Created user with id: ${user.id}`);
   }
-  console.log(`Seeding finished.`)
+  console.log(`Seeding finished.`);
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });

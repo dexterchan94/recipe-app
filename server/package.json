@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "compile": "tsc",
     "build": "npx tsc",
@@ -12,7 +11,7 @@
     "lint": "eslint ./src",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
-    "generate:nexus": "ts-node --esm src/schema",
+    "generate:nexus": "ts-node src/schema",
     "pm": "prisma migrate dev"
   },
   "keywords": [],
