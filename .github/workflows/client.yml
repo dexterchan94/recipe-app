@@ -22,9 +22,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
+          # cache: 'yarn'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Run code generation
         run: yarn codegen
       - name: Run lint check
