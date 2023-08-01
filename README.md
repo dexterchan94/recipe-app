@@ -1,43 +1,45 @@
-# Development
+# Recipe App
 
 ## Server
 
-1. Start PostgreSQL server
-1. Install dependencies `yarn install`
-1. Generate Prisma client and GraphQL Schema `yarn generate`
-1. Run Prisma database migration `yarn pm`
-1. Start development server `yarn dev`
-1. Stop PostgreSQL server
-
-### Linting
+### Run the development server
+1. Fill out `.env` based on `example.env`
+2. Start PostgreSQL server
+3. Install dependencies
+```bash
+yarn install
 ```
-yarn lint
+4. Generate Prisma client and GraphQL Schema
+```bash
+yarn generate
 ```
+5. Run Prisma database migration
+```bash
+yarn migrate:prisma
+```
+6. Start development server
+```bash
+yarn dev
+```
+7. Stop PostgreSQL server
 
 ## Client
 
-### Getting Started
+### Run the development server
 
-Install Dependencies:
+1. Install Dependencies
 ```bash
 yarn install
 ```
 
-Run code generation:
+2. Run code generation
 ```bash
 yarn codegen
 ```
 
-Run the development server:
+3. Run the development server:
 ```bash
 yarn dev
 ```
 
-### Linting
-```
-yarn lint
-```
-
-### Fonts
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 

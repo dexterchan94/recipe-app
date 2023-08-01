@@ -8,11 +8,12 @@
     "build": "npx tsc",
     "start": "npm run compile && node ./dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src --max-warnings 0",
+    "typecheck": "tsc --noEmit",
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node src/schema",
-    "pm": "prisma migrate dev"
+    "migrate:prisma": "prisma migrate dev"
   },
   "keywords": [],
   "author": "",
