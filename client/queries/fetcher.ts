@@ -3,17 +3,14 @@ export function fetcher<TData, TVariables>(
   variables?: TVariables,
 ) {
   return async (): Promise<TData> => {
-    const res = await fetch(
-      process.env.BACKEND_API_URL ?? "",
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query, variables }),
+    const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_API_URL ?? '', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-    );
+      body: JSON.stringify({ query, variables }),
+    });
 
     const json = await res.json();
 
