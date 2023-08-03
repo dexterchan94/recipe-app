@@ -1,8 +1,8 @@
 import { dehydrate, Hydrate } from '@tanstack/react-query';
-import getQueryClient from './getQueryClient';
-import Recipes from './recipes';
-import { RecipesDocument } from '../queries/generated';
-import { fetcher } from '../queries/fetcher';
+import getQueryClient from '../../app/getQueryClient';
+import Recipes from './Recipes';
+import { RecipesDocument } from '../../queries/generated';
+import { fetcher } from '../../queries/fetcher';
 
 export default async function HydratedRecipes() {
   const queryClient = getQueryClient();
