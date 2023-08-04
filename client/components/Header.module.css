@@ -1,0 +1,24 @@
+.header {
+  padding: 1rem;
+  background-color: limegreen;
+  color: #FFF;
+
+  -webkit-box-shadow: 0 2px 3px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 2px 3px rgba(57, 63, 72, 0.3);
+  box-shadow: 0 2px 3px rgba(57, 63, 72, 0.3);
+}
+
+.headerLinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headerLink:hover {
+  color: #F1F1F1;
+}
+
+.headerLink a {
+  padding: 0.5rem;
+}

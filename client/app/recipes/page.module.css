@@ -1,0 +1,24 @@
+.recipesLayout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.recipesLayoutLinks {
+  background-color: rgb(0, 128, 128);
+  color: #FFF;
+}
+
+.recipesLayoutBody {
+  padding: 1.5rem;
+}
+
+.recipesLayoutLink a {
+  display: block;
+  padding: 1.5rem;
+}
+
+.recipesLayoutLinkActive a,
+.recipesLayoutLink a:hover {
+  background-color: rgb(0, 150, 150);
+}
