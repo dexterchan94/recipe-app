@@ -1,7 +1,11 @@
 'use client';
 
 import { useRecipeByIdQuery } from '@/queries/generated';
-import Link from 'next/link';
+import { Button } from '@mui/material';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import EditIcon from '@mui/icons-material/Edit';
+import { useRouter } from 'next/navigation';
+import s from './Recipe.module.css';
 
 export interface RecipeProps {
   id: string;
@@ -10,14 +14,28 @@ export interface RecipeProps {
 export default function Recipe(props: RecipeProps) {
   const { id } = props;
 
+  const router = useRouter();
   const { data } = useRecipeByIdQuery({
     id: Number.parseInt(id),
   });
 
   return (
     <div>
-      <div>
-        <Link href={`/recipes/${id}/edit`}>Edit</Link>
+      <div className={s.pageHeaderActions}>
+        <Button
+          variant="text"
+          startIcon={<KeyboardBackspaceIcon />}
+          onClick={() => router.back()}
+        >
+          Back
+        </Button>
+        <Button
+          variant="text"
+          startIcon={<EditIcon />}
+          onClick={() => router.push(`/recipes/${id}/edit`)}
+        >
+          Edit
+        </Button>
       </div>
       <h1>{data?.recipeById?.title}</h1>
       <p>By {data?.recipeById?.author?.name}</p>

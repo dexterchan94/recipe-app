@@ -1,3 +1,5 @@
+import LoadingSkeletion from '@/components/LoadingSkeleton';
+
 export default function Loading() {
-  return <div>Loading...</div>;
+  return <LoadingSkeletion />;
 }

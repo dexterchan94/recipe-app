@@ -3,6 +3,9 @@
 import RecipeForm from '@/components/recipes/RecipeForm';
 import { useRecipeByIdQuery } from '@/queries/generated';
 import { useRouter } from 'next/navigation';
+import { Button } from '@mui/material';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import s from './Recipe.module.css';
 
 interface EditRecipeProps {
   recipeId: string;
@@ -22,7 +25,15 @@ export default function EditRecipe(props: EditRecipeProps) {
 
   return (
     <>
-      <button onClick={() => router.back()}>Back</button>
+      <div className={s.pageHeaderActions}>
+        <Button
+          variant="text"
+          startIcon={<KeyboardBackspaceIcon />}
+          onClick={() => router.back()}
+        >
+          Back
+        </Button>
+      </div>
       <h1>Edit {data.recipeById.title}</h1>
       <RecipeForm recipe={data.recipeById} />
     </>

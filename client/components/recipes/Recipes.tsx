@@ -2,13 +2,18 @@
 
 import { useDeleteRecipeMutation, useRecipesQuery } from '@/queries/generated';
 import Link from 'next/link';
-import s from './Recipe.module.css';
+import s from './Recipes.module.css';
 import { useCallback, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
+import { IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useRouter } from 'next/navigation';
 
 export default function Recipes() {
   const [recipeIdDeleting, setRecipeIdDeleting] = useState<number | null>(null);
 
+  const router = useRouter();
   const queryClient = useQueryClient();
   const { data } = useRecipesQuery();
   const { mutateAsync: deleteRecipe } = useDeleteRecipeMutation();
@@ -46,14 +51,22 @@ export default function Recipes() {
                 <div>By {recipe.author?.name}</div>
               </div>
               <div>
-                <Link href={`/recipes/${recipe.id}/edit`}>Edit</Link>
+                <IconButton
+                  aria-label="edit"
+                  color="primary"
+                  onClick={() => router.push(`/recipes/${recipe.id}/edit`)}
+                >
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="delete"
+                  color="error"
+                  onClick={() => handleDelete(recipe.id)}
+                  disabled={recipeIdDeleting === recipe.id}
+                >
+                  <DeleteIcon />
+                </IconButton>
               </div>
-              <button
-                onClick={() => handleDelete(recipe.id)}
-                disabled={recipeIdDeleting === recipe.id}
-              >
-                Delete
-              </button>
             </li>
           );
         })}
