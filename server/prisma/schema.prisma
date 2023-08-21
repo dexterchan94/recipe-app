@@ -15,8 +15,17 @@ model User {
 }
 
 model Recipe {
+  id          Int                @id @default(autoincrement())
+  title       String             @db.VarChar(255)
+  author      User               @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    Int
+  ingredients RecipeIngredient[]
+}
+
+model RecipeIngredient {
   id       Int    @id @default(autoincrement())
-  title    String @db.VarChar(255)
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId Int
+  order    Int
+  body     String @db.VarChar(255)
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  recipeId Int
 }

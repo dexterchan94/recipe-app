@@ -2,7 +2,13 @@
 ### Do not make changes to this file directly
 
 
+input CreateRecipeIngredientInput {
+  body: String!
+  order: Int!
+}
+
 input CreateRecipeInput {
+  ingredients: [CreateRecipeIngredientInput!]
   title: String!
 }
 
@@ -32,10 +38,26 @@ type Recipe {
   author: User
   authorId: Int!
   id: Int!
+  ingredients: [RecipeIngredient!]
   title: String!
 }
 
+type RecipeIngredient {
+  body: String!
+  id: Int!
+  order: Int!
+  recipe: Recipe
+  recipeId: Int!
+}
+
+input UpdateRecipeIngredientInput {
+  body: String!
+  id: Int
+  order: Int!
+}
+
 input UpdateRecipeInput {
+  ingredients: [CreateRecipeIngredientInput!]
   title: String!
 }
 

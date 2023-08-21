@@ -14,14 +14,25 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreateRecipeIngredientInput: { // input type
+    body: string; // String!
+    order: number; // Int!
+  }
   CreateRecipeInput: { // input type
+    ingredients?: NexusGenInputs['CreateRecipeIngredientInput'][] | null; // [CreateRecipeIngredientInput!]
     title: string; // String!
   }
   CreateUserInput: { // input type
     email: string; // String!
     name?: string | null; // String
   }
+  UpdateRecipeIngredientInput: { // input type
+    body: string; // String!
+    id?: number | null; // Int
+    order: number; // Int!
+  }
   UpdateRecipeInput: { // input type
+    ingredients?: NexusGenInputs['CreateRecipeIngredientInput'][] | null; // [CreateRecipeIngredientInput!]
     title: string; // String!
   }
   UpdateUserInput: { // input type
@@ -47,6 +58,12 @@ export interface NexusGenObjects {
     authorId: number; // Int!
     id: number; // Int!
     title: string; // String!
+  }
+  RecipeIngredient: { // root type
+    body: string; // String!
+    id: number; // Int!
+    order: number; // Int!
+    recipeId: number; // Int!
   }
   User: { // root type
     email: string; // String!
@@ -85,7 +102,15 @@ export interface NexusGenFieldTypes {
     author: NexusGenRootTypes['User'] | null; // User
     authorId: number; // Int!
     id: number; // Int!
+    ingredients: NexusGenRootTypes['RecipeIngredient'][] | null; // [RecipeIngredient!]
     title: string; // String!
+  }
+  RecipeIngredient: { // field return type
+    body: string; // String!
+    id: number; // Int!
+    order: number; // Int!
+    recipe: NexusGenRootTypes['Recipe'] | null; // Recipe
+    recipeId: number; // Int!
   }
   User: { // field return type
     email: string; // String!
@@ -115,7 +140,15 @@ export interface NexusGenFieldTypeNames {
     author: 'User'
     authorId: 'Int'
     id: 'Int'
+    ingredients: 'RecipeIngredient'
     title: 'String'
+  }
+  RecipeIngredient: { // field return type name
+    body: 'String'
+    id: 'Int'
+    order: 'Int'
+    recipe: 'Recipe'
+    recipeId: 'Int'
   }
   User: { // field return type name
     email: 'String'
