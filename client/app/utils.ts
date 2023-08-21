@@ -5,7 +5,7 @@ import {
   UpdateRecipeInput,
 } from '@/queries/generated';
 
-interface RecipeFormValue {
+export interface RecipeFormValue {
   id?: number;
   title: string;
   ingredients: RecipeIngredientFragment[];

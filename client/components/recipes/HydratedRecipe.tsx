@@ -10,8 +10,8 @@ export default async function HydratedRecipe(props: RecipeProps) {
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery(
-    ['RecipeById', { id }],
-    fetcher(RecipeByIdDocument, { id }),
+    ['RecipeById', { id: Number.parseInt(id) }],
+    fetcher(RecipeByIdDocument, { id: Number.parseInt(id) }),
   );
   const dehydratedState = dehydrate(queryClient);
 
