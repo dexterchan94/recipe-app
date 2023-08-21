@@ -19,6 +19,10 @@ export default function Recipe(props: RecipeProps) {
     id: Number.parseInt(id),
   });
 
+  if (!data || !data.recipeById) {
+    return null;
+  }
+
   return (
     <div>
       <div className={s.pageHeaderActions}>
@@ -37,8 +41,14 @@ export default function Recipe(props: RecipeProps) {
           Edit
         </Button>
       </div>
-      <h1>{data?.recipeById?.title}</h1>
-      <p>By {data?.recipeById?.author?.name}</p>
+      <h1>{data.recipeById.title}</h1>
+      <p>By {data.recipeById.author?.name}</p>
+      <h2>Ingredients</h2>
+      <ul>
+        {data.recipeById.ingredients?.map((ingredient) => {
+          return <li key={ingredient.id}>{ingredient.body}</li>;
+        })}
+      </ul>
     </div>
   );
 }

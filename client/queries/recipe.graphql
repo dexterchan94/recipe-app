@@ -1,8 +1,17 @@
+fragment RecipeIngredient on RecipeIngredient {
+  id
+  order
+  body
+}
+
 fragment RecipeFragment on Recipe {
   title
   id
   author {
     name
+  }
+  ingredients {
+    ...RecipeIngredient
   }
 }
 
