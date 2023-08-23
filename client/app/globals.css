@@ -32,6 +32,19 @@ body {
   color: var(--foreground-rgb);
 }
 
+main {
+  min-height: calc(100vh - 56px - 58px);
+  height: calc(100vh - 56px - 58px);
+  overflow: auto;
+}
+
+main .mainContent {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
