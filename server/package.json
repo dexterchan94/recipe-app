@@ -13,7 +13,9 @@
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node src/schema",
-    "migrate:prisma": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:reset": "prisma migrate reset",
+    "studio": "npx prisma studio"
   },
   "keywords": [],
   "author": "",

@@ -10,9 +10,18 @@ const userData: Prisma.UserCreateInput[] = [
       create: [
         {
           title: 'Recipe 1',
+          ingredients: {
+            create: [
+              { body: 'Ingredient 2', order: 1 },
+              { body: 'Ingredient 1', order: 0 },
+            ],
+          },
         },
         {
           title: 'Recipe 2',
+          ingredients: {
+            create: [],
+          },
         },
       ],
     },
@@ -24,6 +33,9 @@ const userData: Prisma.UserCreateInput[] = [
       create: [
         {
           title: 'Blue Sky',
+          ingredients: {
+            create: [{ body: 'Methylamine', order: 0 }],
+          },
         },
       ],
     },

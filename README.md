@@ -15,7 +15,7 @@ yarn generate
 ```
 5. Run Prisma database migration
 ```bash
-yarn migrate:prisma
+yarn prisma:migrate
 ```
 6. Start development server
 ```bash

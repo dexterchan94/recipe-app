@@ -6,7 +6,7 @@ import { fetcher } from '../../queries/fetcher';
 
 export default async function HydratedRecipes() {
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(['recipes'], fetcher(RecipesDocument));
+  await queryClient.prefetchQuery(['Recipes'], fetcher(RecipesDocument));
   const dehydratedState = dehydrate(queryClient);
 
   return (

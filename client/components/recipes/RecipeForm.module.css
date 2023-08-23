@@ -1,0 +1,13 @@
+.recipeFormSection {
+  margin-bottom: 2rem;
+}
+
+.ingredientRow {
+  margin-bottom: 1rem;
+  display: flex;
+  max-width: 700px;
+}
+
+.ingredientRowTextField {
+  margin-right: 0.5rem !important;
+}
