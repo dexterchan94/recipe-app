@@ -1,9 +1,10 @@
 import HydratedRecipes from '@/components/recipes/HydratedRecipes';
+import PageHeader from './PageHeader';
 
 export default async function RecipesRoute() {
   return (
     <div>
-      <h1>All Recipes</h1>
+      <PageHeader />
       <HydratedRecipes />
     </div>
   );

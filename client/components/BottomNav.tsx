@@ -6,12 +6,14 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import s from './BottomNav.module.css';
 
 export default function BottomNav() {
   const router = useRouter();
-  const [value, setValue] = useState('Recents');
+  const pathname = usePathname();
+
+  const [value, setValue] = useState(pathname);
 
   return (
     <div className={s.bottomNav}>
