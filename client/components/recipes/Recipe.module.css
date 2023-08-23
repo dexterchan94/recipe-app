@@ -5,3 +5,23 @@
   align-items: center;
   margin-bottom: 1rem;
 }
+
+.recipeSection {
+  margin-bottom: 2rem;
+}
+
+.recipeSection h1,
+.recipeSection h2 {
+  margin-bottom: 1rem;
+}
+
+.checkableListItem {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkableListItemLabelChecked {
+  text-decoration: line-through;
+}

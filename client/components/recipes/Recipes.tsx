@@ -6,13 +6,12 @@ import s from './Recipes.module.css';
 import { useCallback, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from 'next/navigation';
 
 export default function Recipes() {
-  const [recipeIdDeleting, setRecipeIdDeleting] = useState<number | null>(null);
-
   const router = useRouter();
   const queryClient = useQueryClient();
   const { data } = useRecipesQuery();
@@ -21,14 +20,11 @@ export default function Recipes() {
   const handleDelete = useCallback(
     async (recipeId: number) => {
       try {
-        setRecipeIdDeleting(recipeId);
-
         await deleteRecipe({
           id: recipeId,
         });
 
         queryClient.invalidateQueries(['Recipes']);
-        setRecipeIdDeleting(null);
       } catch (e) {
         console.error(e);
       }
@@ -38,34 +34,34 @@ export default function Recipes() {
 
   return (
     <div>
-      <ul>
+      <ul className={s.recipeList}>
         {data?.recipes?.map((recipe) => {
           return (
             <li key={recipe.id} className={s.recipeCard}>
               <div>
-                <div>
-                  <Link href={`/recipes/${recipe.id}`}>
-                    <strong>{recipe.title}</strong>
-                  </Link>
+                <div className={`h3 ${s.recipeCardTitle}`}>
+                  <Link href={`/recipes/${recipe.id}`}>{recipe.title}</Link>
                 </div>
                 <div>By {recipe.author?.name}</div>
               </div>
-              <div>
-                <IconButton
-                  aria-label="edit"
-                  color="primary"
+              <div className={s.recipeCardActions}>
+                <Button
+                  size="small"
+                  variant="outlined"
+                  color="error"
+                  endIcon={<DeleteIcon />}
+                  onClick={() => handleDelete(recipe.id)}
+                >
+                  Delete
+                </Button>
+                <Button
+                  size="small"
+                  variant="contained"
+                  endIcon={<EditIcon />}
                   onClick={() => router.push(`/recipes/${recipe.id}/edit`)}
                 >
-                  <EditIcon />
-                </IconButton>
-                <IconButton
-                  aria-label="delete"
-                  color="error"
-                  onClick={() => handleDelete(recipe.id)}
-                  disabled={recipeIdDeleting === recipe.id}
-                >
-                  <DeleteIcon />
-                </IconButton>
+                  Edit
+                </Button>
               </div>
             </li>
           );

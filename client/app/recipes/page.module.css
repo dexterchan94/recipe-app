@@ -5,9 +5,10 @@
 }
 
 .recipesLayoutLinks {
-  background-color: rgb(0, 128, 128);
-  color: #FFF;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  -webkit-box-shadow: 2px 2px 3px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 2px 2px 3px rgba(57, 63, 72, 0.3);
+  box-shadow: 2px 2px 3px rgba(57, 63, 72, 0.3);
 }
 
 .recipesLayoutBody {
@@ -17,9 +18,10 @@
 .recipesLayoutLink a {
   display: block;
   padding: 1.5rem;
+  border-bottom: 1px solid #CCC;
 }
 
 .recipesLayoutLinkActive a,
 .recipesLayoutLink a:hover {
-  background-color: rgb(0, 150, 150);
+  background-color: rgba(46, 125, 50, 0.2);
 }

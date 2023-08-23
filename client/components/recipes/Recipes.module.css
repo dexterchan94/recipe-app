@@ -1,9 +1,27 @@
+.recipeList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+}
+
 .recipeCard {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: space-between;
-  align-items: center;
   padding: 1rem;
-  border: 1px solid var(--foreground-rgb);
   border-radius: var(--border-radius);
-  margin-top: 1rem;
+
+  -webkit-box-shadow: 1px 1px 3px 2px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 1px 1px 3px 2px rgba(57, 63, 72, 0.3);
+  box-shadow: 1px 1px 3px 2px rgba(57, 63, 72, 0.3);
+}
+
+.recipeCardTitle {
+  font-weight: bold
+}
+
+.recipeCardActions {
+  display: flex;
+  justify-content: space-between;
 }
