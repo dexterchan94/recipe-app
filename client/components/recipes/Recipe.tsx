@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecipeByIdQuery } from '@/queries/generated';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import EditIcon from '@mui/icons-material/Edit';
 import { useRouter } from 'next/navigation';

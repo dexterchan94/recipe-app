@@ -3,7 +3,7 @@
 import RecipeForm from '@/components/recipes/RecipeForm';
 import { useRecipeByIdQuery } from '@/queries/generated';
 import { useRouter } from 'next/navigation';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import s from './Recipe.module.css';
 
