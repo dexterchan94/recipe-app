@@ -5,6 +5,14 @@ import {
   UpdateRecipeInput,
 } from '@/queries/generated';
 
+export function sleep(ms: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}
+
 export interface RecipeFormValue {
   id?: number;
   title: string;
