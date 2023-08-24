@@ -26,7 +26,7 @@ import {
   formValuesToRecipePayload,
   recipeDataToFormValues,
 } from '@/app/utils';
-import * as Yup from 'yup';
+import { string, object, array } from 'yup';
 import { useCallback } from 'react';
 import s from './RecipeForm.module.css';
 
@@ -34,11 +34,11 @@ interface RecipeFormProps {
   recipe?: RecipeFragmentFragment;
 }
 
-const RecipeFormSchema = Yup.object().shape({
-  title: Yup.string().required('Required'),
-  ingredients: Yup.array().of(
-    Yup.object().shape({
-      body: Yup.string().required('Required'),
+const RecipeFormSchema = object().shape({
+  title: string().required('Required'),
+  ingredients: array().of(
+    object().shape({
+      body: string().required('Required'),
     }),
   ),
 });
